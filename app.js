@@ -1,6 +1,6 @@
 /**
- * Iron Family Cinema Production - Collaboration & Inquiry Application
- * Company: شركة سينما الأسرة الحديدية (Iron Family Cinema Production)
+ * Iron Cinema - Collaboration & Inquiry Application
+ * Company: السينما الحديدية (Iron Cinema)
  * Official WhatsApp Target: https://wa.me/201125566003
  */
 
@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'TR': { nameAr: 'الجمهورية التركية', nameEn: 'Turkey', code: '+90', flag: '🇹🇷', minLen: 9, maxLen: 11, placeholder: '5XXXXXXXXX' }
   };
 
-  const STORAGE_KEY = 'iron_family_cinema_inquiries_v1';
+  const STORAGE_KEY = 'iron_cinema_inquiries_v1';
+  const LEGACY_STORAGE_KEY = 'iron_family_cinema_inquiries_v1';
   const OFFICIAL_WA_NUMBER = '201125566003';
 
   // ==========================================
@@ -399,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   function getStoredInquiries() {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
       return raw ? JSON.parse(raw) : [];
     } catch (e) {
       console.error('Failed to read from localStorage:', e);
@@ -519,7 +520,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Format WhatsApp Message
     const waMessage = 
-`🎬 *طلب تعاون مشترك - سينما الأسرة الحديدية*
+`🎬 *طلب تعاون مشترك - السينما الحديدية*
 ━━━━━━━━━━━━━━━━━━━━
 📌 *الموضوع / Subject:*
 ${subject}
@@ -730,7 +731,7 @@ ${details}
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `IronFamily_Inquiries_${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `IronCinema_Inquiries_${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
     showToast('تم تصدير ملف JSON بنجاح', 'success');
@@ -761,7 +762,7 @@ ${details}
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `IronFamily_Inquiries_${new Date().toISOString().slice(0, 10)}.csv`;
+    a.download = `IronCinema_Inquiries_${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
     showToast('تم تصدير ملف CSV بنجاح', 'success');
