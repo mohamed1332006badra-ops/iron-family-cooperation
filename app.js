@@ -658,18 +658,26 @@ ${details}
 
   // Copy Invitation Message Button Handler
   if (copyInviteBtn) {
-    copyInviteBtn.addEventListener('click', () => {
+    copyInviteBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+
       const inviteMsg = 
-`🎬 *شركة سينما الأسرة الحديدية • Iron Family Cinema Production*
-يسعدنا استقبال طلبات التعاون المشترك، الرعاية، والإنتاج السينمائي والإعلامي عبر بوابتنا الرسمية:
-🔗 https://iron-family-cooperation.vercel.app
+`https://iron-family-cooperation.vercel.app
 
-يجمع هذا النموذج جميع المعلومات اللازمة لمراجعة طلب التعاون. بعد إرسال الطلب، سيتواصل فريقنا معكم للتأكد من ملاءمته. شكرًا لكم! 🙌`;
+يجمع هذا النموذج جميع المعلومات اللازمة لمراجعة طلب التعاون.
 
-      if (navigator.clipboard && navigator.clipboard.writeText) {
+بعد إرسال الطلب، سيتواصل فريقنا معكم للتأكد من ملاءمته.
+
+شكرًا لكم! 🙌`;
+
+      if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(inviteMsg)
-          .then(() => showToast('✅ تم نسخ رسالة الدعوة بالرابط بنجاح!', 'success'))
-          .catch(() => fallbackCopyText(inviteMsg));
+          .then(() => {
+            showToast('✅ تم نسخ رسالة الدعوة بالرابط بنجاح!', 'success');
+          })
+          .catch(() => {
+            fallbackCopyText(inviteMsg);
+          });
       } else {
         fallbackCopyText(inviteMsg);
       }
@@ -680,15 +688,34 @@ ${details}
     const textArea = document.createElement('textarea');
     textArea.value = text;
     textArea.style.position = 'fixed';
-    textArea.style.opacity = '0';
+    textArea.style.top = '0';
+    textArea.style.left = '0';
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = '0';
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+    textArea.style.fontSize = '16px';
+    textArea.setAttribute('readonly', '');
     document.body.appendChild(textArea);
+
+    textArea.focus();
     textArea.select();
+    textArea.setSelectionRange(0, text.length);
+
     try {
-      document.execCommand('copy');
-      showToast('✅ تم نسخ رسالة الدعوة بالرابط بنجاح!', 'success');
+      const successful = document.execCommand('copy');
+      if (successful) {
+        showToast('✅ تم نسخ رسالة الدعوة بالرابط بنجاح!', 'success');
+      } else {
+        showToast('يرجى نسخ الرابط يدوياً: https://iron-family-cooperation.vercel.app', 'info');
+      }
     } catch (err) {
-      showToast('تعذر النسخ تلقائياً، يرجى نسخ الرابط يدوياً', 'info');
+      showToast('يرجى نسخ الرابط يدوياً: https://iron-family-cooperation.vercel.app', 'info');
     }
+
     document.body.removeChild(textArea);
   }
 

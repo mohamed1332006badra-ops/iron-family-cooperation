@@ -1972,28 +1972,31 @@ textarea.form-control {
 .toast-container {
   position: fixed;
   bottom: 24px;
-  right: 24px;
-  z-index: 1000;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
-  max-width: 380px;
-  width: calc(100% - 48px);
+  max-width: 440px;
+  width: calc(100% - 32px);
   pointer-events: none;
 }
 
 .toast {
   pointer-events: auto;
-  padding: 14px 18px;
-  border-radius: 12px;
+  padding: 14px 20px;
+  border-radius: 14px;
   background: #FFFFFF;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(212, 175, 55, 0.2);
   display: flex;
   align-items: center;
   gap: 12px;
-  animation: slideToast 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  font-size: 0.88rem;
-  font-weight: 600;
+  animation: slideToastUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  font-size: 0.92rem;
+  font-weight: 700;
+  width: 100%;
 }
 
 .toast.toast-success {
@@ -2011,13 +2014,13 @@ textarea.form-control {
   color: #854D0E;
 }
 
-@keyframes slideToast {
+@keyframes slideToastUp {
   from {
-    transform: translateX(100%);
+    transform: translateY(35px);
     opacity: 0;
   }
   to {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -2222,10 +2225,12 @@ textarea.form-control {
   }
 
   .toast-container {
-    left: 16px;
-    right: 16px;
-    width: auto;
-    bottom: 16px;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 400px;
+    z-index: 9999;
   }
 }
 
