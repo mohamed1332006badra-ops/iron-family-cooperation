@@ -40,86 +40,6 @@
 </head>
 <body>
 
-  <!-- Cinematic Background Elements: Hollywood Premiere Night Stage -->
-  <div class="cinema-bg" id="cinemaBg" aria-hidden="true">
-    <!-- HTML5 Atmosphere Canvas: 3D Golden Dust, Projector Motes & Film Strips -->
-    <canvas id="cinemaAtmosphereCanvas" class="cinema-atmosphere-canvas"></canvas>
-
-    <!-- Deep Ambient Glows & Auditorium Lighting -->
-    <div class="ambient-spotlight ambient-left" id="ambientSpotlightLeft"></div>
-    <div class="ambient-spotlight ambient-right" id="ambientSpotlightRight"></div>
-    <div class="ambient-spotlight ambient-center"></div>
-    <div class="auditorium-stage-glow"></div>
-    <div class="cinema-grid-pattern"></div>
-
-    <!-- Top Vintage Cinema Projector & Volumetric Light Cone -->
-    <div class="projector-rig-container" id="projectorRig">
-      <img src="./assets/projector.svg" alt="Cinema Projector" class="projector-img">
-      <!-- Expanding Volumetric Golden-White Light Beam -->
-      <div class="projector-light-cone" id="projectorBeam">
-        <div class="projector-lens-flare"></div>
-        <div class="projector-beam-sheen"></div>
-      </div>
-    </div>
-
-    <!-- Floating 3D Cinema Elements in Depth (Behind Form Card) -->
-    <div class="cinema-stage-props" id="stageProps">
-      <!-- Left Side: 3D Golden Film Reel & Curving 35mm Ribbon -->
-      <div class="stage-prop prop-reel-left" id="propReelLeft">
-        <img src="./assets/film-reel.svg" alt="35mm Film Reel" class="prop-img">
-      </div>
-      <div class="stage-prop prop-strip-left" id="propStripLeft">
-        <img src="./assets/floating-filmstrip.svg" alt="Cinema Film Ribbon" class="prop-img">
-      </div>
-
-      <!-- Right Side: Hollywood Cinema Clapperboard & Curving 35mm Ribbon -->
-      <div class="stage-prop prop-clapper-right" id="propClapperRight">
-        <img src="./assets/clapperboard.svg" alt="Production Clapperboard" class="prop-img">
-      </div>
-      <div class="stage-prop prop-strip-right" id="propStripRight">
-        <img src="./assets/floating-filmstrip.svg" alt="Cinema Film Ribbon" class="prop-img">
-      </div>
-    </div>
-
-    <!-- Volumetric IMAX Premiere God Rays & Spotlights -->
-    <div class="volumetric-beam beam-left" id="godRayLeft">
-      <div class="beam-flare-head"></div>
-    </div>
-    <div class="volumetric-beam beam-right" id="godRayRight">
-      <div class="beam-flare-head"></div>
-    </div>
-    <div class="volumetric-beam beam-center"></div>
-
-    <!-- Multi-Layered Velvet Curtains with 3D Tiebacks & Tassels -->
-    <div class="velvet-curtain-group curtain-group-left" id="curtainGroupLeft">
-      <div class="velvet-curtain curtain-left"></div>
-      <div class="curtain-tieback tieback-left"></div>
-    </div>
-    <div class="velvet-curtain-group curtain-group-right" id="curtainGroupRight">
-      <div class="velvet-curtain curtain-right"></div>
-      <div class="curtain-tieback tieback-right"></div>
-    </div>
-    <div class="velvet-curtain-top" id="curtainPelmet"></div>
-
-    <!-- Royal Red Carpet Aisle Extending Under the Form Card -->
-    <div class="red-carpet-aisle-container" id="redCarpetAisle">
-      <div class="red-carpet-velvet">
-        <div class="carpet-gold-border carpet-border-left"></div>
-        <div class="carpet-gold-border carpet-border-right"></div>
-        <div class="carpet-gold-runners"></div>
-        <div class="carpet-ambient-light"></div>
-      </div>
-    </div>
-
-    <!-- Sleek Dark-Gold Glossy Cinema Stage Floor at Viewport Bottom Edge -->
-    <div class="cinema-stage-floor" id="cinemaStageFloor">
-      <div class="stage-brass-rim"></div>
-      <div class="stage-gloss-reflection"></div>
-    </div>
-
-    <div class="floating-sparks-container" id="sparksContainer"></div>
-  </div>
-
   <!-- Top Utilities Bar -->
   <header class="top-nav-bar">
     <div class="nav-container">
@@ -154,8 +74,7 @@
       <!-- Golden Bordered Logo Frame with Glow Effect -->
       <div class="logo-frame-outer">
         <div class="logo-frame-inner">
-          <img src="./assets/logo.jpg" alt="شعار شركة سينما الأسرة الحديدية" class="brand-logo-img" onerror="this.onerror=null; this.src='./assets/logo.svg';">
-          <div class="logo-shine-overlay"></div>
+          <img src="./assets/logo.jpg" alt="شعار شركة سينما الأسرة الحديدية" class="brand-logo-img" width="165" height="165" loading="eager" fetchpriority="high" onerror="this.onerror=null; this.src='./assets/logo.png';">
         </div>
         <div class="frame-corner corner-tl"></div>
         <div class="frame-corner corner-tr"></div>
