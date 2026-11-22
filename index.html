@@ -428,40 +428,32 @@
       </div>
     </aside>
 
-    <!-- Success Confirmation State Overlay / Modal -->
+    <!-- Final Step Warning Overlay / Modal -->
     <div class="confirmation-overlay" id="confirmationOverlay" aria-hidden="true">
-      <div class="confirmation-dialog">
-        <div class="confirmation-check-anim">
-          <svg class="checkmark-svg" viewBox="0 0 52 52">
-            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
-            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-          </svg>
+      <div class="confirmation-dialog warning-dialog">
+        <div class="warning-badge-wrap">
+          <div class="warning-icon-badge" aria-hidden="true">⚠️</div>
         </div>
-        <h3 class="confirmation-title">تم تسجيل طلبكم بنجاح!</h3>
-        <p class="confirmation-en">Your Inquiry has been logged successfully</p>
+        <h3 class="confirmation-title warning-title">⚠️ خطوة أخيرة لإتمام الإرسال!</h3>
+        <p class="confirmation-en warning-subtitle">Final Step Required — Your inquiry is NOT sent yet</p>
         
+        <p class="final-step-instruction">
+          يرجى الضغط على الزر الأخضر بالأسفل وإرسال الرسالة الجاهزة داخل تطبيق واتساب ليصل طلبكم إلى فريق شركة السينما الحديدية.
+        </p>
+
         <div class="confirmation-summary" id="confirmationSummary">
           <!-- Injected via JS -->
         </div>
 
-        <div class="redirect-countdown-wrap">
-          <div class="countdown-bar-outer">
-            <div class="countdown-bar-inner" id="countdownBar"></div>
-          </div>
-          <p class="redirect-notice">
-            جارٍ نقلك تلقائياً إلى محادثة الواتساب خلال <span id="countdownSeconds">3</span> ثوانٍ...
-          </p>
-        </div>
-
         <div class="confirmation-actions">
-          <a href="#" id="directWaLink" class="btn-wa-now" target="_blank" rel="noopener noreferrer">
+          <a href="#" id="directWaLink" class="btn-wa-now btn-wa-large" target="_blank" rel="noopener noreferrer">
             <svg class="wa-icon-svg" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.995.545 1.777.838 2.796.839h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.773-5.766zm6.84 5.765c-.002 3.75-3.053 6.801-6.805 6.801-1.163 0-2.302-.298-3.303-.865l-3.663.961.978-3.571c-.624-1.042-.953-2.228-.952-3.326.002-3.75 3.053-6.801 6.805-6.801 3.751 0 6.802 3.051 6.804 6.801z"/>
             </svg>
-            فتح الواتساب الآن • Open WhatsApp
+            <span>📲 إرسال الطلب عبر واتساب الآن • Send via WhatsApp</span>
           </a>
           <button type="button" class="btn-dismiss-confirmation" id="dismissConfirmationBtn">
-            إغلاق ومتابعة التصفح
+            تعديل البيانات • Edit Details
           </button>
         </div>
       </div>

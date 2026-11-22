@@ -55,8 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const confirmationOverlay = document.getElementById('confirmationOverlay');
   const confirmationSummary = document.getElementById('confirmationSummary');
   const directWaLink = document.getElementById('directWaLink');
-  const countdownBar = document.getElementById('countdownBar');
-  const countdownSeconds = document.getElementById('countdownSeconds');
   const dismissConfirmationBtn = document.getElementById('dismissConfirmationBtn');
 
   // History & Modal Elements
@@ -73,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const clearInquiriesBtn = document.getElementById('clearInquiriesBtn');
   const toastContainer = document.getElementById('toastContainer');
 
-  let countdownInterval = null;
 
   // ==========================================
   // 3. Helper Functions & Toast Notifications
@@ -582,62 +579,36 @@ ${details}
       </div>
     `;
 
-    // 3. Show confirmation overlay & toast
-    showToast('تم تسجيل وحفظ طلبكم بنجاح! جارٍ تحويلك للواتساب... • Request logged!', 'success');
-    
-    setTimeout(() => {
-      submitBtn.classList.remove('is-loading');
-      submitBtn.disabled = false;
-      showConfirmationModal(waUrl);
-    }, 600);
+    // 3. Immediately show the Amber Final Step screen
+    submitBtn.classList.remove('is-loading');
+    submitBtn.disabled = false;
+    showConfirmationModal(waUrl);
+
+    // 4. Trigger Immediate WhatsApp Redirect (Zero Delay, directly inside submit gesture)
+    try {
+      window.location.href = waUrl;
+    } catch (err) {
+      window.open(waUrl, '_blank');
+    }
   });
 
   // ==========================================
-  // 11. Confirmation Modal & Auto-Redirect
+  // 11. Final Step Modal Controls
   // ==========================================
   function showConfirmationModal(waUrl) {
+    if (directWaLink) directWaLink.href = waUrl;
     confirmationOverlay.classList.add('is-active');
     confirmationOverlay.setAttribute('aria-hidden', 'false');
-
-    let secondsLeft = 3;
-    countdownSeconds.textContent = secondsLeft;
-    countdownBar.style.width = '100%';
-
-    // Trigger bar transition
-    setTimeout(() => {
-      countdownBar.style.width = '0%';
-    }, 50);
-
-    if (countdownInterval) clearInterval(countdownInterval);
-
-    countdownInterval = setInterval(() => {
-      secondsLeft -= 1;
-      if (secondsLeft > 0) {
-        countdownSeconds.textContent = secondsLeft;
-      } else {
-        clearInterval(countdownInterval);
-        countdownSeconds.textContent = '0';
-        // Auto open WhatsApp
-        window.open(waUrl, '_blank');
-      }
-    }, 1000);
   }
 
   function hideConfirmationModal() {
-    if (countdownInterval) clearInterval(countdownInterval);
     confirmationOverlay.classList.remove('is-active');
     confirmationOverlay.setAttribute('aria-hidden', 'true');
   }
 
   dismissConfirmationBtn.addEventListener('click', () => {
     hideConfirmationModal();
-    form.reset();
-    charCounter.textContent = 'مفتوح • Unlimited';
-    activeDialCodePrefix.textContent = '+20';
-    document.querySelectorAll('.form-group').forEach(g => {
-      g.classList.remove('has-success', 'has-error');
-    });
-    topicChips.forEach(c => c.classList.remove('active'));
+    // Keep form data intact so user can edit details easily
   });
 
   // ==========================================
