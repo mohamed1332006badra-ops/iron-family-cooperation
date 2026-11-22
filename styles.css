@@ -1402,12 +1402,18 @@ textarea.form-control {
 
 .record-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 6px;
+  gap: 8px 12px;
+  padding-top: 8px;
   border-top: 1px dashed #E2E8F0;
   font-size: 0.8rem;
   color: #475569;
+}
+
+.record-footer span {
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .empty-records-state {
@@ -1704,5 +1710,67 @@ textarea.form-control {
   }
   .inquiry-card {
     padding: 18px 12px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .inquiries-modal .modal-dialog,
+  .history-modal .modal-dialog {
+    width: 95% !important;
+    max-width: 95% !important;
+    max-height: 90vh !important;
+    border-radius: 16px !important;
+  }
+
+  .modal-header {
+    padding: 14px 16px !important;
+  }
+
+  .modal-actions-bar {
+    padding: 10px 16px !important;
+    gap: 8px !important;
+  }
+
+  .modal-body {
+    padding: 14px 16px !important;
+    gap: 12px !important;
+  }
+
+  .inquiry-record-card {
+    padding: 12px 14px !important;
+    gap: 8px !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .record-top {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+
+  .record-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .record-footer span {
+    display: block !important;
+    width: 100% !important;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+    white-space: normal !important;
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .record-details {
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
   }
 }

@@ -78,7 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 3. Helper Functions & Toast Notifications
   // ==========================================
-  function showToast(message, type = 'info', duration = 4000) {
+  let toastTimer = null;
+  let toastRemoveTimer = null;
+
+  function showToast(message, type = 'info', duration = 2500) {
+    if (toastTimer) clearTimeout(toastTimer);
+    if (toastRemoveTimer) clearTimeout(toastRemoveTimer);
+    toastContainer.innerHTML = '';
+
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
     
@@ -94,11 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
     toast.innerHTML = `${iconSvg}<span>${escapeHtml(message)}</span>`;
     toastContainer.appendChild(toast);
 
-    setTimeout(() => {
+    toastTimer = setTimeout(() => {
       toast.style.opacity = '0';
       toast.style.transform = 'translateY(10px)';
       toast.style.transition = 'all 0.3s ease';
-      setTimeout(() => toast.remove(), 300);
+      toastRemoveTimer = setTimeout(() => {
+        toast.remove();
+      }, 300);
     }, duration);
   }
 
@@ -423,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
       inquiriesListContainer.innerHTML = `
         <div class="empty-records-state">
           <div class="empty-icon">📂</div>
-          <h4>لا توجد طلبات محفوظة حتى الآن</h4>
+          <h4>لا توجد طلبات محفوظة حالياً</h4>
           <p>عند إرسال أي استفسار، سيتم حفظ نسخة احتياطية محلية هنا تلقائياً.</p>
         </div>
       `;
@@ -762,7 +771,14 @@ ${details}
   // Clear Inquiries
   clearInquiriesBtn.addEventListener('click', () => {
     if (confirm('هل أنت متأكد من مسح جميع الاستفسارات المحفوظة في هذا المتصفح؟')) {
+      // Remove all active and legacy keys
       localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(LEGACY_STORAGE_KEY);
+      localStorage.removeItem('iron_cinema_inquiries');
+      localStorage.removeItem('iron_family_inquiries');
+      localStorage.removeItem('iron_family_cinema_inquiries');
+      
+      // Immediately refresh UI and counter
       updateInquiryBadge();
       renderInquiriesList();
       showToast('تم مسح السجل المحلي بنجاح', 'info');
