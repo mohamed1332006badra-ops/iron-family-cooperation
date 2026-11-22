@@ -1,6 +1,6 @@
 /**
- * Iron Cinema - Collaboration & Inquiry Application
- * Company: السينما الحديدية (Iron Cinema)
+ * Iron Cinema Company - Collaboration & Inquiry Application
+ * Company: شركة السينما الحديدية (Iron Cinema Company)
  * Official WhatsApp Target: https://wa.me/201125566003
  */
 
@@ -208,13 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Character Counter for Details Textarea
   // ==========================================
   detailsInput.addEventListener('input', () => {
-    const len = detailsInput.value.length;
-    charCounter.textContent = `${len} / 1500`;
-    if (len >= 1400) {
-      charCounter.style.color = 'var(--error-color)';
-    } else {
-      charCounter.style.color = 'var(--text-light)';
-    }
     validateField('details', false);
   });
 
@@ -520,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Format WhatsApp Message
     const waMessage = 
-`🎬 *طلب تعاون مشترك - السينما الحديدية*
+`🎬 *طلب تعاون مشترك - شركة السينما الحديدية*
 ━━━━━━━━━━━━━━━━━━━━
 📌 *الموضوع / Subject:*
 ${subject}
@@ -630,7 +623,7 @@ ${details}
   dismissConfirmationBtn.addEventListener('click', () => {
     hideConfirmationModal();
     form.reset();
-    charCounter.textContent = '0 / 1500';
+    charCounter.textContent = 'مفتوح • Unlimited';
     activeDialCodePrefix.textContent = '+20';
     document.querySelectorAll('.form-group').forEach(g => {
       g.classList.remove('has-success', 'has-error');
@@ -665,9 +658,7 @@ ${details}
       const inviteMsg = 
 `https://iron-family-cooperation.vercel.app
 
-يجمع هذا النموذج جميع المعلومات اللازمة لمراجعة طلب التعاون.
-
-بعد إرسال الطلب، سيتواصل فريقنا معكم للتأكد من ملاءمته.
+طلب تعاون مشترك، وبعد إرسال الطلب سيتواصل فريقنا معكم.
 
 شكرًا لكم! 🙌`;
 
