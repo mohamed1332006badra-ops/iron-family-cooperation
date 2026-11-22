@@ -77,33 +77,48 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #0b0708;
   overflow-x: hidden;
-  max-width: 100vw;
+  overflow-y: auto;
+  height: auto;
+  min-height: 100vh;
 }
 
 body {
   min-height: 100vh;
-  background-color: var(--dark-cinema-bg);
+  height: auto;
+  background-color: #0b0708;
   color: var(--text-main);
   font-family: var(--font-arabic);
   direction: rtl;
   text-align: right;
   line-height: 1.6;
   overflow-x: hidden;
-  max-width: 100vw;
+  overflow-y: auto;
   position: relative;
   display: flex;
   flex-direction: column;
+  transform: none !important;
+  -webkit-transform: none !important;
+  perspective: none !important;
+  -webkit-perspective: none !important;
 }
 
 /* Cinematic Atmospheric Background: Premiere Night Stage */
 .cinema-bg {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none !important;
   z-index: 0;
   overflow: hidden;
   background: radial-gradient(circle at 50% 20%, #161622 0%, #0D0D12 60%, #07070A 100%);
+  transform: none !important;
+  -webkit-transform: none !important;
+  perspective: none !important;
+  -webkit-perspective: none !important;
 }
 
 /* HTML5 Atmosphere Canvas (Bokeh Dust & 35mm Film Strip Silhouettes) */
@@ -133,7 +148,6 @@ body {
   border-radius: 50%;
   filter: blur(100px);
   opacity: 0.55;
-  will-change: transform, opacity;
   pointer-events: none !important;
 }
 
@@ -239,7 +253,6 @@ body {
   bottom: 0;
   z-index: 2;
   pointer-events: none !important;
-  will-change: transform;
   transition: transform 0.12s cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
@@ -318,7 +331,6 @@ body {
   background-repeat: repeat-x;
   background-size: auto 100%;
   filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.95));
-  will-change: transform;
 }
 
 /* ==========================================
@@ -334,7 +346,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  will-change: transform;
 }
 
 .projector-img {
@@ -412,7 +423,6 @@ body {
 .stage-prop {
   position: absolute;
   pointer-events: none !important;
-  will-change: transform;
   transition: transform 0.14s cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
@@ -483,7 +493,7 @@ body {
 }
 
 /* ==========================================
-   Royal Red Carpet Aisle & Stage Footlights
+   Royal Red Carpet Aisle (2D Clip-Path Perspective - Zero GPU Layer Clipping)
    ========================================== */
 .red-carpet-aisle-container {
   position: fixed;
@@ -491,17 +501,17 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 580px;
-  height: 40vh;
+  height: 38vh;
   pointer-events: none !important;
   z-index: 1;
-  perspective: 700px;
+  perspective: none !important;
+  -webkit-perspective: none !important;
 }
 
 .red-carpet-velvet {
   width: 100%;
   height: 100%;
-  transform: rotateX(58deg);
-  transform-origin: bottom center;
+  clip-path: polygon(22% 0%, 78% 0%, 100% 100%, 0% 100%);
   background: linear-gradient(180deg, 
     #2B0306 0%, 
     #5E0911 25%, 
@@ -513,7 +523,8 @@ body {
     0 -12px 45px rgba(0, 0, 0, 0.95),
     inset 0 0 35px rgba(0, 0, 0, 0.6);
   position: relative;
-  border-radius: 8px 8px 0 0;
+  transform: none !important;
+  -webkit-transform: none !important;
 }
 
 .carpet-gold-border {
@@ -624,11 +635,9 @@ body {
 /* Top Nav Utilities Bar */
 .top-nav-bar {
   position: relative;
-  z-index: 10;
+  z-index: 25;
   padding: 12px 20px;
-  background: rgba(13, 13, 18, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #0D0D12;
   border-bottom: 1px solid rgba(212, 175, 55, 0.18);
 }
 
@@ -737,9 +746,10 @@ body {
 }
 
 /* Page Layout Wrapper */
+main.page-wrapper,
 .page-wrapper {
-  position: relative;
-  z-index: 10;
+  position: relative !important;
+  z-index: 20 !important;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -750,6 +760,10 @@ body {
   width: 100%;
   transform: none !important;
   -webkit-transform: none !important;
+  perspective: none !important;
+  -webkit-perspective: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Brand Hero Section */
@@ -760,9 +774,11 @@ body {
   flex-direction: column;
   align-items: center;
   position: relative;
-  z-index: 10;
+  z-index: 20;
   transform: none !important;
   -webkit-transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Golden Bordered Logo Frame with Subtle Glow & Rim Light */
@@ -930,16 +946,18 @@ body {
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
-  position: relative;
-  z-index: 10;
+  position: relative !important;
+  z-index: 20 !important;
   transform: none !important;
   -webkit-transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Royal Gold Rim Wrapper - Ultra-Stable 60fps Mobile Compositing */
 .inquiry-card-shimmer-wrap {
-  position: relative;
-  z-index: 10;
+  position: relative !important;
+  z-index: 20 !important;
   padding: 2.5px;
   border-radius: calc(var(--radius-card) + 2.5px);
   background: linear-gradient(
@@ -955,12 +973,17 @@ body {
   transform: none !important;
   -webkit-transform: none !important;
   will-change: auto !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Centered White Card Container (Crisp Solid White #FFFFFF, 100% Readable, Zero-Flicker) */
-.inquiry-card {
-  position: relative;
-  z-index: 10;
+.inquiry-card,
+.form-card {
+  position: relative !important;
+  z-index: 20 !important;
   background: #FFFFFF !important;
   border-radius: var(--radius-card);
   padding: 36px 32px 30px;
@@ -968,7 +991,12 @@ body {
   width: 100%;
   transform: none !important;
   -webkit-transform: none !important;
+  will-change: auto !important;
+  filter: none !important;
+  backdrop-filter: none !important;
   box-shadow: none;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .card-gold-accent {
@@ -1542,9 +1570,7 @@ textarea.form-control {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(13, 13, 18, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(13, 13, 18, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1767,8 +1793,7 @@ textarea.form-control {
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(13, 13, 18, 0.8);
-  backdrop-filter: blur(8px);
+  background: rgba(13, 13, 18, 0.92);
 }
 
 .modal-dialog {
@@ -2136,21 +2161,28 @@ textarea.form-control {
   }
 
   /* 100% Solid Non-Clipping GPU Rendering on Mobile */
+  main.page-wrapper,
   .page-wrapper,
   .form-container-section,
   .inquiry-card-shimmer-wrap,
-  .inquiry-card {
+  .inquiry-card,
+  .form-card {
     position: relative !important;
-    z-index: 10 !important;
+    z-index: 20 !important;
     transform: none !important;
     -webkit-transform: none !important;
     animation: none !important;
     will-change: auto !important;
     filter: none !important;
+    -webkit-filter: none !important;
     backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
-  .inquiry-card {
+  .inquiry-card,
+  .form-card {
     background: #FFFFFF !important;
   }
 
