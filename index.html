@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>شركة سينما الأسرة الحديدية | تعاون مشترك • Joint Cooperation | Iron Family Cinema Production</title>
+  <meta name="description" content="البوابة الرسمية لتقديم طلبات التعاون المشترك، الرعاية، والإنتاج السينمائي لشركة سينما الأسرة الحديدية - Iron Family Cinema Production">
+  <meta name="theme-color" content="#0D0D12">
+
+  <!-- Open Graph / WhatsApp Preview Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="شركة سينما الأسرة الحديدية | استمارة التعاون المشترك">
+  <meta property="og:description" content="البوابة الرسمية لتقديم طلبات التعاون، الرعاية، والإنتاج السينمائي - شركة سينما الأسرة الحديدية (Iron Family Cinema Production).">
+  <meta property="og:image" content="./assets/logo.jpg">
+  <meta property="og:url" content="https://iron-family-cooperation.vercel.app">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="شركة سينما الأسرة الحديدية | استمارة التعاون المشترك">
+  <meta name="twitter:description" content="البوابة الرسمية لتقديم طلبات التعاون، الرعاية، والإنتاج السينمائي لشركة سينما الأسرة الحديدية.">
+  <meta name="twitter:image" content="./assets/logo.jpg">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
+  <link rel="apple-touch-icon" href="./assets/logo.jpg">
+
+  <!-- Google Fonts: Cairo (Arabic) & Inter (English) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- Cinematic Background Elements: Hollywood Premiere Night Stage -->
+  <div class="cinema-bg" id="cinemaBg" aria-hidden="true">
+    <!-- HTML5 Atmosphere Canvas: 3D Golden Dust, Projector Motes & Film Strips -->
+    <canvas id="cinemaAtmosphereCanvas" class="cinema-atmosphere-canvas"></canvas>
+
+    <!-- Deep Ambient Glows & Auditorium Lighting -->
+    <div class="ambient-spotlight ambient-left" id="ambientSpotlightLeft"></div>
+    <div class="ambient-spotlight ambient-right" id="ambientSpotlightRight"></div>
+    <div class="ambient-spotlight ambient-center"></div>
+    <div class="auditorium-stage-glow"></div>
+    <div class="cinema-grid-pattern"></div>
+
+    <!-- Top Vintage Cinema Projector & Volumetric Light Cone -->
+    <div class="projector-rig-container" id="projectorRig">
+      <img src="./assets/projector.svg" alt="Cinema Projector" class="projector-img">
+      <!-- Expanding Volumetric Golden-White Light Beam -->
+      <div class="projector-light-cone" id="projectorBeam">
+        <div class="projector-lens-flare"></div>
+        <div class="projector-beam-sheen"></div>
+      </div>
+    </div>
+
+    <!-- Floating 3D Cinema Elements in Depth (Behind Form Card) -->
+    <div class="cinema-stage-props" id="stageProps">
+      <!-- Left Side: 3D Golden Film Reel & Curving 35mm Ribbon -->
+      <div class="stage-prop prop-reel-left" id="propReelLeft">
+        <img src="./assets/film-reel.svg" alt="35mm Film Reel" class="prop-img">
+      </div>
+      <div class="stage-prop prop-strip-left" id="propStripLeft">
+        <img src="./assets/floating-filmstrip.svg" alt="Cinema Film Ribbon" class="prop-img">
+      </div>
+
+      <!-- Right Side: Hollywood Cinema Clapperboard & Curving 35mm Ribbon -->
+      <div class="stage-prop prop-clapper-right" id="propClapperRight">
+        <img src="./assets/clapperboard.svg" alt="Production Clapperboard" class="prop-img">
+      </div>
+      <div class="stage-prop prop-strip-right" id="propStripRight">
+        <img src="./assets/floating-filmstrip.svg" alt="Cinema Film Ribbon" class="prop-img">
+      </div>
+    </div>
+
+    <!-- Volumetric IMAX Premiere God Rays & Spotlights -->
+    <div class="volumetric-beam beam-left" id="godRayLeft">
+      <div class="beam-flare-head"></div>
+    </div>
+    <div class="volumetric-beam beam-right" id="godRayRight">
+      <div class="beam-flare-head"></div>
+    </div>
+    <div class="volumetric-beam beam-center"></div>
+
+    <!-- Multi-Layered Velvet Curtains with 3D Tiebacks & Tassels -->
+    <div class="velvet-curtain-group curtain-group-left" id="curtainGroupLeft">
+      <div class="velvet-curtain curtain-left"></div>
+      <div class="curtain-tieback tieback-left"></div>
+    </div>
+    <div class="velvet-curtain-group curtain-group-right" id="curtainGroupRight">
+      <div class="velvet-curtain curtain-right"></div>
+      <div class="curtain-tieback tieback-right"></div>
+    </div>
+    <div class="velvet-curtain-top" id="curtainPelmet"></div>
+
+    <!-- Royal Red Carpet Aisle Extending Under the Form Card -->
+    <div class="red-carpet-aisle-container" id="redCarpetAisle">
+      <div class="red-carpet-velvet">
+        <div class="carpet-gold-border carpet-border-left"></div>
+        <div class="carpet-gold-border carpet-border-right"></div>
+        <div class="carpet-gold-runners"></div>
+        <div class="carpet-ambient-light"></div>
+      </div>
+      <div class="stage-footlights-row">
+        <span class="footlight"></span>
+        <span class="footlight"></span>
+        <span class="footlight"></span>
+        <span class="footlight"></span>
+        <span class="footlight"></span>
+        <span class="footlight"></span>
+      </div>
+    </div>
+
+    <!-- Sleek Dark-Gold Glossy Cinema Stage Floor at Viewport Bottom Edge -->
+    <div class="cinema-stage-floor" id="cinemaStageFloor">
+      <div class="stage-brass-rim"></div>
+      <div class="stage-gloss-reflection"></div>
+    </div>
+
+    <div class="floating-sparks-container" id="sparksContainer"></div>
+  </div>
+
+  <!-- Top Utilities Bar -->
+  <header class="top-nav-bar">
+    <div class="nav-container">
+      <div class="brand-status-pill">
+        <span class="status-dot"></span>
+        <span class="status-text">نستقبل طلبات التعاون والإنتاج 2026 • Open for Inquiries</span>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Inquiries History Trigger -->
+        <button type="button" class="history-toggle-btn" id="historyToggleBtn" title="الاستفسارات المحفوظة محلياً • Local Inquiries">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="history-text">السجل المحلي (<span id="inquiryCountBadge">0</span>)</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="page-wrapper">
+
+    <!-- Hero / Brand Section -->
+    <section class="brand-hero-section">
+      <!-- Golden Bordered Logo Frame with Glow Effect -->
+      <div class="logo-frame-outer">
+        <div class="logo-frame-inner">
+          <img src="./assets/logo.jpg" alt="شعار شركة سينما الأسرة الحديدية" class="brand-logo-img" onerror="this.onerror=null; this.src='./assets/logo.svg';">
+          <div class="logo-shine-overlay"></div>
+        </div>
+        <div class="frame-corner corner-tl"></div>
+        <div class="frame-corner corner-tr"></div>
+        <div class="frame-corner corner-bl"></div>
+        <div class="frame-corner corner-br"></div>
+      </div>
+
+      <!-- Company Identity Titles -->
+      <div class="brand-titles">
+        <h1 class="company-name-ar">شركة سينما الأسرة الحديدية</h1>
+        <p class="company-name-en">Iron Family Cinema Production</p>
+        <div class="brand-divider">
+          <span class="divider-line"></span>
+          <span class="divider-diamond">◆</span>
+          <span class="divider-line"></span>
+        </div>
+        <p class="brand-tagline">إنتاج سينمائي وفني بمعايير عالمية • World-Class Cinema & Media Production</p>
+      </div>
+    </section>
+
+    <!-- Main Inquiry Form Card with Royal Animated Gold Shimmer Rim -->
+    <section class="form-container-section">
+      <div class="inquiry-card-shimmer-wrap">
+        <div class="inquiry-card">
+          <!-- Gold Decorative Accent Line -->
+          <div class="card-gold-accent"></div>
+
+        <!-- Card Header -->
+        <header class="card-header">
+          <div class="header-badge">
+            <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+              <line x1="7" y1="2" x2="7" y2="22"></line>
+              <line x1="17" y1="2" x2="17" y2="22"></line>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <line x1="2" y1="7" x2="7" y2="7"></line>
+              <line x1="2" y1="17" x2="7" y2="17"></line>
+              <line x1="17" y1="17" x2="22" y2="17"></line>
+              <line x1="17" y1="7" x2="22" y2="7"></line>
+            </svg>
+            <span>استمارة التعاون المشترك • Joint Cooperation Form</span>
+          </div>
+
+          <h2 class="card-title">تعاون مشترك • Joint Cooperation</h2>
+          <p class="card-subtitle">
+            <span class="sub-ar">اكتب بياناتك وتفاصيل التعاون، وفريقنا هيتواصل معاك في أسرع وقت.</span>
+            <span class="sub-sep">|</span>
+            <span class="sub-en">Fill in your details and our team will get back to you.</span>
+          </p>
+        </header>
+
+        <!-- Form Element -->
+        <form id="inquiryForm" class="inquiry-form" novalidate autocomplete="on">
+
+          <!-- Field 1: Subject -->
+          <div class="form-group" id="group-subject">
+            <label for="subjectInput" class="form-label">
+              <span class="label-text">الموضوع • Subject</span>
+              <span class="required-star">*</span>
+            </label>
+            <div class="input-wrapper">
+              <input 
+                type="text" 
+                id="subjectInput" 
+                name="subject" 
+                class="form-control" 
+                placeholder="مثال: إنتاج إعلان / رعاية / تعاون فني..." 
+                required 
+                maxlength="120"
+                aria-describedby="subject-help subject-error"
+              >
+              <span class="input-status-icon" aria-hidden="true"></span>
+            </div>
+
+            <!-- Quick Suggestion Topic Chips -->
+            <div class="quick-topics-row">
+              <span class="quick-topics-label">اقتراحات سريعة:</span>
+              <div class="quick-chips">
+                <button type="button" class="topic-chip" data-topic="إنتاج إعلان تجاري (TVC)">🎬 إنتاج إعلان</button>
+                <button type="button" class="topic-chip" data-topic="رعاية عمل فني / سينمائي">🤝 رعاية رسمية</button>
+                <button type="button" class="topic-chip" data-topic="إنتاج فيلم سينمائي / وثائقي">🎥 إنتاج سينمائي</button>
+                <button type="button" class="topic-chip" data-topic="تعاون فني وكتابة سيناريو">🎭 تعاون فني</button>
+                <button type="button" class="topic-chip" data-topic="إنتاج محتوى بودكاست وإعلامي">🎙️ بودكاست وميديا</button>
+              </div>
+            </div>
+
+            <div class="field-feedback" id="subject-error"></div>
+          </div>
+
+          <!-- Field 2: Details -->
+          <div class="form-group" id="group-details">
+            <div class="label-with-meta">
+              <label for="detailsInput" class="form-label">
+                <span class="label-text">تفاصيل التعاون • Cooperation Details</span>
+                <span class="required-star">*</span>
+              </label>
+              <span class="char-counter" id="charCounter">0 / 1500</span>
+            </div>
+            <div class="input-wrapper textarea-wrapper">
+              <textarea 
+                id="detailsInput" 
+                name="details" 
+                rows="4" 
+                class="form-control" 
+                placeholder="اشرح لنا تفاصيل مشروعك أو فكرة التعاون المشترك..." 
+                required 
+                maxlength="1500"
+                aria-describedby="details-error"
+              ></textarea>
+              <span class="input-status-icon textarea-icon" aria-hidden="true"></span>
+            </div>
+            <div class="field-feedback" id="details-error"></div>
+          </div>
+
+          <!-- Field 3: Full Name -->
+          <div class="form-group" id="group-name">
+            <label for="nameInput" class="form-label">
+              <span class="label-text">الاسم بالكامل • Your name</span>
+              <span class="required-star">*</span>
+            </label>
+            <div class="input-wrapper">
+              <input 
+                type="text" 
+                id="nameInput" 
+                name="name" 
+                class="form-control" 
+                placeholder="الاسم أو اسم الجهة / الشركة" 
+                required 
+                maxlength="80"
+                autocomplete="name"
+                aria-describedby="name-error"
+              >
+              <span class="input-status-icon" aria-hidden="true"></span>
+            </div>
+            <div class="field-feedback" id="name-error"></div>
+          </div>
+
+          <!-- Field: Email -->
+          <div class="form-group" id="group-email">
+            <label for="emailInput" class="form-label">
+              <span class="label-text">البريد الإلكتروني • Email</span>
+              <span class="required-star">*</span>
+            </label>
+            <div class="input-wrapper">
+              <input 
+                type="email" 
+                id="emailInput" 
+                name="email" 
+                class="form-control ltr-input" 
+                placeholder="example@domain.com" 
+                required 
+                dir="ltr"
+                autocomplete="email"
+                aria-describedby="email-error"
+              >
+              <span class="input-status-icon" aria-hidden="true"></span>
+            </div>
+            <div class="field-feedback" id="email-error"></div>
+          </div>
+
+          <!-- Field: Social / Page Link -->
+          <div class="form-group" id="group-pagelink">
+            <label for="pageLinkInput" class="form-label">
+              <span class="label-text">رابط صفحتكم أو موقعكم • Page / Website Link</span>
+            </label>
+            <div class="input-wrapper input-with-icon">
+              <span class="input-inline-icon">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </span>
+              <input 
+                type="text" 
+                id="pageLinkInput" 
+                name="pageLink" 
+                class="form-control ltr-input input-has-leading-icon" 
+                placeholder="https://facebook.com/yourpage أو رابط الصفحة..." 
+                dir="ltr"
+                autocomplete="url"
+                aria-describedby="pagelink-error"
+              >
+              <span class="input-status-icon" aria-hidden="true"></span>
+            </div>
+            <div class="field-feedback" id="pagelink-error"></div>
+          </div>
+
+          <!-- Fields 4 & 5: Country Code & Phone/WhatsApp (Two Column Layout on Mobile & Desktop) -->
+          <div class="form-row phone-grid-row">
+            
+            <!-- Field 4: Country Code -->
+            <div class="form-group col-code" id="group-country-code">
+              <label for="countryCodeSelect" class="form-label">
+                <span class="label-text">مفتاح الدولة • Country code</span>
+                <span class="required-star">*</span>
+              </label>
+              <div class="select-wrapper">
+                <select id="countryCodeSelect" name="countryCode" class="form-control form-select" required>
+                  <option value="+20" data-country="EG" data-mask="1XXXXXXXXX" selected>🇪🇬 مصر Egypt (+20)</option>
+                  <option value="+971" data-country="AE" data-mask="5XXXXXXXX">🇦🇪 الإمارات UAE (+971)</option>
+                  <option value="+966" data-country="SA" data-mask="5XXXXXXXX">🇸🇦 السعودية KSA (+966)</option>
+                  <option value="+965" data-country="KW" data-mask="XXXXXXXX">🇰🇼 الكويت Kuwait (+965)</option>
+                  <option value="+974" data-country="QA" data-mask="XXXXXXXX">🇶🇦 قطر Qatar (+974)</option>
+                  <option value="+973" data-country="BH" data-mask="XXXXXXXX">🇧🇭 البحرين Bahrain (+973)</option>
+                  <option value="+968" data-country="OM" data-mask="XXXXXXXX">🇴🇲 عُمان Oman (+968)</option>
+                  <option value="+962" data-country="JO" data-mask="7XXXXXXXX">🇯🇴 الأردن Jordan (+962)</option>
+                  <option value="+218" data-country="LY" data-mask="9XXXXXXXX">🇱🇾 ليبيا Libya (+218)</option>
+                  <option value="+964" data-country="IQ" data-mask="7XXXXXXXXX">🇮🇶 العراق Iraq (+964)</option>
+                  <option value="+961" data-country="LB" data-mask="XXXXXXXX">🇱🇧 لبنان Lebanon (+961)</option>
+                  <option value="+212" data-country="MA" data-mask="6XXXXXXXX">🇲🇦 المغرب Morocco (+212)</option>
+                  <option value="+213" data-country="DZ" data-mask="XXXXXXXXX">🇩🇿 الجزائر Algeria (+213)</option>
+                  <option value="+216" data-country="TN" data-mask="XXXXXXXX">🇹🇳 تونس Tunisia (+216)</option>
+                  <option value="+1" data-country="US" data-mask="XXXXXXXXXX">🇺🇸 أمريكا / كندا USA/CA (+1)</option>
+                  <option value="+44" data-country="GB" data-mask="7XXXXXXXXX">🇬🇧 بريطانيا UK (+44)</option>
+                  <option value="+90" data-country="TR" data-mask="5XXXXXXXXX">🇹🇷 تركيا Turkey (+90)</option>
+                </select>
+                <span class="select-arrow" aria-hidden="true"></span>
+              </div>
+              <div class="field-feedback" id="country-code-error"></div>
+            </div>
+
+            <!-- Field 5: Phone / WhatsApp -->
+            <div class="form-group col-phone" id="group-phone">
+              <label for="phoneInput" class="form-label">
+                <span class="label-text">الهاتف / واتساب • Phone / WhatsApp</span>
+                <span class="required-star">*</span>
+              </label>
+              <div class="input-wrapper input-with-dial">
+                <span class="dial-code-prefix" id="activeDialCodePrefix">+20</span>
+                <input 
+                  type="tel" 
+                  id="phoneInput" 
+                  name="phone" 
+                  class="form-control ltr-input" 
+                  placeholder="1XXXXXXXXX" 
+                  required 
+                  inputmode="numeric"
+                  dir="ltr"
+                  autocomplete="tel-national"
+                  aria-describedby="phone-helper phone-error"
+                >
+                <span class="input-status-icon" aria-hidden="true"></span>
+              </div>
+
+              <!-- Real-time Phone Auto-Strip Indicator -->
+              <div class="phone-helper-strip" id="phoneHelperStrip" style="display: none;">
+                <svg class="helper-icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span id="phoneHelperText">تم إزالة الصفر الأول تلقائياً لتوافق الواتساب</span>
+              </div>
+
+              <div class="field-feedback" id="phone-error"></div>
+            </div>
+          </div>
+
+          <!-- Field 6: Country (Automatically syncs with country code) -->
+          <div class="form-group" id="group-country">
+            <label for="countrySelect" class="form-label">
+              <span class="label-text">الدولة • Country</span>
+              <span class="required-star">*</span>
+            </label>
+            <div class="select-wrapper">
+              <select id="countrySelect" name="country" class="form-control form-select" required>
+                <option value="EG" selected>جمهورية مصر العربية • Egypt (EG)</option>
+                <option value="AE">الإمارات العربية المتحدة • United Arab Emirates (AE)</option>
+                <option value="SA">المملكة العربية السعودية • Saudi Arabia (SA)</option>
+                <option value="KW">دولة الكويت • Kuwait (KW)</option>
+                <option value="QA">دولة قطر • Qatar (QA)</option>
+                <option value="BH">مملكة البحرين • Bahrain (BH)</option>
+                <option value="OM">سلطنة عُمان • Oman (OM)</option>
+                <option value="JO">المملكة الأردنية الهاشمية • Jordan (JO)</option>
+                <option value="LY">دولة ليبيا • Libya (LY)</option>
+                <option value="IQ">جمهورية العراق • Iraq (IQ)</option>
+                <option value="LB">الجمهورية اللبنانية • Lebanon (LB)</option>
+                <option value="MA">المملكة المغربية • Morocco (MA)</option>
+                <option value="DZ">الجمهورية الجزائرية • Algeria (DZ)</option>
+                <option value="TN">الجمهورية التونسية • Tunisia (TN)</option>
+                <option value="US">الولايات المتحدة الأمريكية • United States (US)</option>
+                <option value="GB">المملكة المتحدة • United Kingdom (GB)</option>
+                <option value="TR">الجمهورية التركية • Turkey (TR)</option>
+              </select>
+              <span class="select-arrow" aria-hidden="true"></span>
+            </div>
+            <div class="field-feedback" id="country-error"></div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="submit-action-wrapper">
+            <button type="submit" id="submitBtn" class="btn-cinematic-submit">
+              <span class="btn-shine"></span>
+              <span class="btn-content">
+                <span class="btn-text">إرسال الطلب • Send 🚀</span>
+              </span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+            <p class="direct-wa-notice">
+              🔒 سيتم توجيهك فوراً لمحادثة الواتساب المعتمدة مع نسخة من تفاصيل طلبك
+            </p>
+          </div>
+
+        </form>
+
+        <!-- Direct WhatsApp Quick Connect Banner -->
+        <div class="official-contact-strip">
+          <div class="contact-strip-info">
+            <span class="strip-label">الخط الساخن المباشر • Direct WhatsApp:</span>
+            <a href="https://wa.me/201125566003" target="_blank" rel="noopener noreferrer" class="strip-link">
+              <span dir="ltr">+20 112 556 6003</span>
+            </a>
+          </div>
+          <span class="strip-badge">24/7 متاح للشركاء</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Local Inquiries Drawer / Modal (Backed up in localStorage) -->
+    <aside class="inquiries-modal" id="inquiriesModal" aria-hidden="true">
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div class="modal-dialog">
+        <header class="modal-header">
+          <div class="modal-title-wrap">
+            <h3 class="modal-title">سجل الطلبات المحفوظة • Stored Inquiries</h3>
+            <p class="modal-subtitle">جميع الطلبات المرسلة يتم حفظها تلقائياً على متصفحك كنسخة احتياطية آمنة</p>
+          </div>
+          <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="إغلاق">✕</button>
+        </header>
+
+        <div class="modal-actions-bar">
+          <button type="button" class="btn-modal-action" id="exportJsonBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            تصدير JSON
+          </button>
+          <button type="button" class="btn-modal-action" id="exportCsvBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            تصدير CSV
+          </button>
+          <button type="button" class="btn-modal-action btn-danger" id="clearInquiriesBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            مسح السجل
+          </button>
+        </div>
+
+        <div class="modal-body" id="inquiriesListContainer">
+          <!-- Dynamic Inquiries List -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- Success Confirmation State Overlay / Modal -->
+    <div class="confirmation-overlay" id="confirmationOverlay" aria-hidden="true">
+      <div class="confirmation-dialog">
+        <div class="confirmation-check-anim">
+          <svg class="checkmark-svg" viewBox="0 0 52 52">
+            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+        </div>
+        <h3 class="confirmation-title">تم تسجيل طلبكم بنجاح!</h3>
+        <p class="confirmation-en">Your Inquiry has been logged successfully</p>
+        
+        <div class="confirmation-summary" id="confirmationSummary">
+          <!-- Injected via JS -->
+        </div>
+
+        <div class="redirect-countdown-wrap">
+          <div class="countdown-bar-outer">
+            <div class="countdown-bar-inner" id="countdownBar"></div>
+          </div>
+          <p class="redirect-notice">
+            جارٍ نقلك تلقائياً إلى محادثة الواتساب خلال <span id="countdownSeconds">3</span> ثوانٍ...
+          </p>
+        </div>
+
+        <div class="confirmation-actions">
+          <a href="#" id="directWaLink" class="btn-wa-now" target="_blank" rel="noopener noreferrer">
+            <svg class="wa-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.995.545 1.777.838 2.796.839h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.773-5.766zm6.84 5.765c-.002 3.75-3.053 6.801-6.805 6.801-1.163 0-2.302-.298-3.303-.865l-3.663.961.978-3.571c-.624-1.042-.953-2.228-.952-3.326.002-3.75 3.053-6.801 6.805-6.801 3.751 0 6.802 3.051 6.804 6.801z"/>
+            </svg>
+            فتح الواتساب الآن • Open WhatsApp
+          </a>
+          <button type="button" class="btn-dismiss-confirmation" id="dismissConfirmationBtn">
+            إغلاق ومتابعة التصفح
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Toast Container -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  </main>
+
+  <!-- Clean, Minimal Footer -->
+  <footer class="cinema-footer">
+    <div class="footer-inner">
+      <div class="footer-logo-wrap">
+        <img src="./assets/logo.svg" alt="Cinema Logo" class="footer-logo-small">
+        <span class="footer-brand-title">سينما الأسرة الحديدية • Iron Family</span>
+      </div>
+      <p class="footer-copy">© 2026 شركة سينما الأسرة الحديدية - جميع الحقوق محفوظة</p>
+      <div class="footer-links">
+        <a href="https://wa.me/201125566003" target="_blank" rel="noopener noreferrer">واتساب الإدارة</a>
+        <span class="footer-sep">•</span>
+        <button type="button" class="footer-link-btn" id="footerHistoryBtn">سجل الاستفسارات</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="./app.js"></script>
+</body>
+</html>

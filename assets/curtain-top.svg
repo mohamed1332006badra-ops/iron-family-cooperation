@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 110" preserveAspectRatio="none" width="100%" height="100%">
+  <defs>
+    <!-- 3D Velvet Swag Gradient with Deep Shadow -->
+    <radialGradient id="pelmetSwag3D" cx="50%" cy="0%" r="90%">
+      <stop offset="0%" stop-color="#DE1E32" />
+      <stop offset="35%" stop-color="#9B111E" />
+      <stop offset="70%" stop-color="#55070F" />
+      <stop offset="100%" stop-color="#1A0205" />
+    </radialGradient>
+
+    <!-- Metallic Gold Bullion Fringe Gradient -->
+    <linearGradient id="goldFringe3D" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFEAA7" />
+      <stop offset="20%" stop-color="#D4AF37" />
+      <stop offset="50%" stop-color="#8C6A12" />
+      <stop offset="85%" stop-color="#FFEFA8" />
+      <stop offset="100%" stop-color="#4F3806" />
+    </linearGradient>
+
+    <filter id="pelmet3DShadow" x="-5%" y="0%" width="110%" height="180%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000000" flood-opacity="0.95" />
+    </filter>
+  </defs>
+
+  <g filter="url(#pelmet3DShadow)">
+    <!-- Deep Stage Shadow Under Pelmet -->
+    <rect x="0" y="0" width="1200" height="75" fill="#0E0103" opacity="0.6" />
+
+    <!-- 6 Scalloped 3D Velvet Swags -->
+    <path d="M 0,0 L 200,0 C 185,75 115,88 100,88 C 85,88 15,75 0,0 Z" fill="url(#pelmetSwag3D)" />
+    <path d="M 200,0 L 400,0 C 385,75 315,88 300,88 C 285,88 215,75 200,0 Z" fill="url(#pelmetSwag3D)" />
+    <path d="M 400,0 L 600,0 C 585,75 515,88 500,88 C 485,88 415,75 400,0 Z" fill="url(#pelmetSwag3D)" />
+    <path d="M 600,0 L 800,0 C 785,75 715,88 700,88 C 685,88 615,75 600,0 Z" fill="url(#pelmetSwag3D)" />
+    <path d="M 800,0 L 1000,0 C 985,75 915,88 900,88 C 885,88 815,75 800,0 Z" fill="url(#pelmetSwag3D)" />
+    <path d="M 1000,0 L 1200,0 C 1185,75 1115,88 1100,88 C 1085,88 1015,75 1000,0 Z" fill="url(#pelmetSwag3D)" />
+
+    <!-- Silk Highlights along swag curves -->
+    <path d="M 5,5 C 20,68 85,78 100,78 C 115,78 180,68 195,5" fill="none" stroke="rgba(255,200,210,0.35)" stroke-width="3" />
+    <path d="M 205,5 C 220,68 285,78 300,78 C 315,78 380,68 395,5" fill="none" stroke="rgba(255,200,210,0.35)" stroke-width="3" />
+    <path d="M 405,5 C 420,68 485,78 500,78 C 515,78 580,68 595,5" fill="none" stroke="rgba(255,200,210,0.35)" stroke-width="3" />
+    <path d="M 605,5 C 620,68 685,78 700,78 C 715,78 780,68 795,5" fill="none" stroke="rgba(255,200,210,0.35)" stroke-width="3" />
+    <path d="M 805,5 C 820,68 885,78 900,78 C 915,78 980,68 995,5" fill="none" stroke="rgba(255,200,210,0.35)" stroke-width="3" />
+    <path d="M 1005,5 C 1020,68 1085,78 1100,78 C 1115,78 1180,68 1195,5" fill="none" stroke="rgba(255,200,210,0.35)" stroke-width="3" />
+
+    <!-- Top Metallic Cornice Band -->
+    <rect x="0" y="0" width="1200" height="8" fill="url(#goldFringe3D)" />
+    <rect x="0" y="8" width="1200" height="2" fill="#3D2B05" />
+
+    <!-- Bottom Bullion Fringe Trim with Hanging Beads -->
+    <path d="
+      M 0,0 C 15,75 85,88 100,88 C 115,88 185,75 200,0
+      C 215,75 285,88 300,88 C 315,88 385,75 400,0
+      C 415,75 485,88 500,88 C 515,88 585,75 600,0
+      C 615,75 685,88 700,88 C 715,88 785,75 800,0
+      C 815,75 885,88 900,88 C 915,88 985,75 1000,0
+      C 1015,75 1085,88 1100,88 C 1115,88 1185,75 1200,0
+    " fill="none" stroke="url(#goldFringe3D)" stroke-width="5" stroke-dasharray="3,4" />
+
+    <!-- Hanging Gold Drops / Pendants -->
+    <circle cx="100" cy="94" r="4" fill="url(#goldFringe3D)" stroke="#3D2B05" stroke-width="1" />
+    <circle cx="300" cy="94" r="4" fill="url(#goldFringe3D)" stroke="#3D2B05" stroke-width="1" />
+    <circle cx="500" cy="94" r="4" fill="url(#goldFringe3D)" stroke="#3D2B05" stroke-width="1" />
+    <circle cx="700" cy="94" r="4" fill="url(#goldFringe3D)" stroke="#3D2B05" stroke-width="1" />
+    <circle cx="900" cy="94" r="4" fill="url(#goldFringe3D)" stroke="#3D2B05" stroke-width="1" />
+    <circle cx="1100" cy="94" r="4" fill="url(#goldFringe3D)" stroke="#3D2B05" stroke-width="1" />
+  </g>
+</svg>
