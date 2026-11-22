@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dismissConfirmationBtn = document.getElementById('dismissConfirmationBtn');
 
   // History & Modal Elements
+  const copyInviteBtn = document.getElementById('copyInviteBtn');
   const historyToggleBtn = document.getElementById('historyToggleBtn');
   const footerHistoryBtn = document.getElementById('footerHistoryBtn');
   const inquiriesModal = document.getElementById('inquiriesModal');
@@ -655,6 +656,42 @@ ${details}
   modalCloseBtn.addEventListener('click', closeInquiriesModal);
   modalBackdrop.addEventListener('click', closeInquiriesModal);
 
+  // Copy Invitation Message Button Handler
+  if (copyInviteBtn) {
+    copyInviteBtn.addEventListener('click', () => {
+      const inviteMsg = 
+`🎬 *شركة سينما الأسرة الحديدية • Iron Family Cinema Production*
+يسعدنا استقبال طلبات التعاون المشترك، الرعاية، والإنتاج السينمائي والإعلامي عبر بوابتنا الرسمية:
+🔗 https://iron-family-cooperation.vercel.app
+
+يجمع هذا النموذج جميع المعلومات اللازمة لمراجعة طلب التعاون. بعد إرسال الطلب، سيتواصل فريقنا معكم للتأكد من ملاءمته. شكرًا لكم! 🙌`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(inviteMsg)
+          .then(() => showToast('✅ تم نسخ رسالة الدعوة بالرابط بنجاح!', 'success'))
+          .catch(() => fallbackCopyText(inviteMsg));
+      } else {
+        fallbackCopyText(inviteMsg);
+      }
+    });
+  }
+
+  function fallbackCopyText(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      showToast('✅ تم نسخ رسالة الدعوة بالرابط بنجاح!', 'success');
+    } catch (err) {
+      showToast('تعذر النسخ تلقائياً، يرجى نسخ الرابط يدوياً', 'info');
+    }
+    document.body.removeChild(textArea);
+  }
+
   // Export JSON
   exportJsonBtn.addEventListener('click', () => {
     const data = getStoredInquiries();
@@ -743,23 +780,19 @@ ${details}
     let animId = null;
     let isTabVisible = true;
 
-    // Parallax Interpolation Variables
+    // Detect Touch / Mobile Devices to Disable Heavy DOM Parallax Jitter
+    const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+    // Parallax Interpolation Variables (Desktop Mouse Only)
     let targetParallaxX = 0;
     let targetParallaxY = 0;
     let currentParallaxX = 0;
     let currentParallaxY = 0;
 
-    window.addEventListener('mousemove', (e) => {
-      targetParallaxX = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
-      targetParallaxY = (e.clientY / window.innerHeight - 0.5) * 2;
-    }, { passive: true });
-
-    if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', (e) => {
-        if (e.gamma !== null && e.beta !== null) {
-          targetParallaxX = Math.max(-1, Math.min(1, e.gamma / 25));
-          targetParallaxY = Math.max(-1, Math.min(1, (e.beta - 40) / 25));
-        }
+    if (!isMobile) {
+      window.addEventListener('mousemove', (e) => {
+        targetParallaxX = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
+        targetParallaxY = (e.clientY / window.innerHeight - 0.5) * 2;
       }, { passive: true });
     }
 
@@ -915,45 +948,47 @@ ${details}
       currentParallaxX += (targetParallaxX - currentParallaxX) * 0.055;
       currentParallaxY += (targetParallaxY - currentParallaxY) * 0.055;
 
-      // Apply 3D Shift to Stage Elements with Sub-pixel Precision
-      if (curtainGroupLeft) {
-        curtainGroupLeft.style.transform = `translate3d(${currentParallaxX * -14}px, ${currentParallaxY * -6}px, 0)`;
-      }
-      if (curtainGroupRight) {
-        curtainGroupRight.style.transform = `translate3d(${currentParallaxX * -14}px, ${currentParallaxY * -6}px, 0)`;
-      }
-      if (curtainPelmet) {
-        curtainPelmet.style.transform = `translate3d(0, ${currentParallaxY * -8}px, 0)`;
-      }
-      if (godRayLeft) {
-        godRayLeft.style.transform = `rotate(${-16 + currentParallaxX * 6}deg)`;
-      }
-      if (godRayRight) {
-        godRayRight.style.transform = `rotate(${16 + currentParallaxX * 6}deg)`;
-      }
-      if (cinemaStageFloor) {
-        cinemaStageFloor.style.transform = `translate3d(0, ${currentParallaxY * 5}px, 0)`;
-      }
-      if (projectorRig) {
-        projectorRig.style.transform = `translateX(calc(-50% + ${currentParallaxX * 6}px))`;
-      }
-      if (projectorBeam) {
-        projectorBeam.style.transform = `translateX(-50%) rotate(${currentParallaxX * 3.5}deg)`;
-      }
-      if (propReelLeft) {
-        propReelLeft.style.transform = `translate3d(${currentParallaxX * -18}px, ${currentParallaxY * -10}px, 0)`;
-      }
-      if (propStripLeft) {
-        propStripLeft.style.transform = `translate3d(${currentParallaxX * -22}px, ${currentParallaxY * -12}px, 0)`;
-      }
-      if (propClapperRight) {
-        propClapperRight.style.transform = `translate3d(${currentParallaxX * -18}px, ${currentParallaxY * -10}px, 0)`;
-      }
-      if (propStripRight) {
-        propStripRight.style.transform = `translate3d(${currentParallaxX * -22}px, ${currentParallaxY * -12}px, 0)`;
-      }
-      if (redCarpetAisle) {
-        redCarpetAisle.style.transform = `translateX(calc(-50% + ${currentParallaxX * 8}px)) translate3d(0, ${currentParallaxY * 4}px, 0)`;
+      // Apply 3D Shift to Stage Elements ONLY on Desktop (Zero DOM manipulation during mobile scroll)
+      if (!isMobile) {
+        if (curtainGroupLeft) {
+          curtainGroupLeft.style.transform = `translate3d(${currentParallaxX * -14}px, ${currentParallaxY * -6}px, 0)`;
+        }
+        if (curtainGroupRight) {
+          curtainGroupRight.style.transform = `translate3d(${currentParallaxX * -14}px, ${currentParallaxY * -6}px, 0)`;
+        }
+        if (curtainPelmet) {
+          curtainPelmet.style.transform = `translate3d(0, ${currentParallaxY * -8}px, 0)`;
+        }
+        if (godRayLeft) {
+          godRayLeft.style.transform = `rotate(${-16 + currentParallaxX * 6}deg)`;
+        }
+        if (godRayRight) {
+          godRayRight.style.transform = `rotate(${16 + currentParallaxX * 6}deg)`;
+        }
+        if (cinemaStageFloor) {
+          cinemaStageFloor.style.transform = `translate3d(0, ${currentParallaxY * 5}px, 0)`;
+        }
+        if (projectorRig) {
+          projectorRig.style.transform = `translateX(calc(-50% + ${currentParallaxX * 6}px))`;
+        }
+        if (projectorBeam) {
+          projectorBeam.style.transform = `translateX(-50%) rotate(${currentParallaxX * 3.5}deg)`;
+        }
+        if (propReelLeft) {
+          propReelLeft.style.transform = `translate3d(${currentParallaxX * -18}px, ${currentParallaxY * -10}px, 0)`;
+        }
+        if (propStripLeft) {
+          propStripLeft.style.transform = `translate3d(${currentParallaxX * -22}px, ${currentParallaxY * -12}px, 0)`;
+        }
+        if (propClapperRight) {
+          propClapperRight.style.transform = `translate3d(${currentParallaxX * -18}px, ${currentParallaxY * -10}px, 0)`;
+        }
+        if (propStripRight) {
+          propStripRight.style.transform = `translate3d(${currentParallaxX * -22}px, ${currentParallaxY * -12}px, 0)`;
+        }
+        if (redCarpetAisle) {
+          redCarpetAisle.style.transform = `translateX(calc(-50% + ${currentParallaxX * 8}px)) translate3d(0, ${currentParallaxY * 4}px, 0)`;
+        }
       }
 
       ctx.clearRect(0, 0, width, height);
